@@ -8,7 +8,3 @@ A polished stock research workspace with forecasting views, a market screener, w
 - CSS
 - JavaScript
 - Custom generated visual artwork
-
-## Note
-
-Market scores and forecasts are simulated for presentation purposes. This project is not financial advice.
