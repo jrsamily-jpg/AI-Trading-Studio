@@ -1,6 +1,6 @@
 # AI Trading Studio
 
-A polished stock research workspace with forecasting views, a market screener, watchlist tools, market headlines, decision notes, and position-sizing support.
+AI Trading Studio is an interactive stock market analysis dashboard built for forecasting, research, and portfolio planning. It includes stock predictions, market movers, company comparisons, watchlists, risk tools, and a live news panel powered by Finnhub API integration. Users can enter their own API key inside the app to load real company news and market updates.
 
 ## Built With
 
@@ -8,7 +8,3 @@ A polished stock research workspace with forecasting views, a market screener, w
 - CSS
 - JavaScript
 - Custom generated visual artwork
-
-## Note
-
-Market scores and forecasts are simulated for presentation purposes. This project is not financial advice.
