@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Trading Studio</title>
+  <meta name="description" content="AI Trading Studio is a polished stock research and prediction prototype with forecasts, insights, watchlists, news, risk tools, and market scanning.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="site-shell">
+    <header class="topbar">
+      <a class="brand" href="#home" aria-label="AI Trading Studio home">
+        <span class="brand-mark">ATS</span>
+        <span>
+          <strong>AI Trading Studio</strong>
+          <small>Research-grade market predictor</small>
+        </span>
+      </a>
+      <nav class="nav-links" aria-label="Primary navigation">
+        <a href="#studio">Studio</a>
+        <a href="#markets">Markets</a>
+        <a href="#insights">Insights</a>
+        <a href="#risk">Risk</a>
+      </nav>
+      <button class="nav-action" id="themeToggle" type="button" aria-label="Toggle display mode">Focus Mode</button>
+    </header>
+
+    <main>
+      <section class="hero" id="home">
+        <div class="hero-copy">
+          <h1>AI Trading Studio</h1>
+          <p class="hero-lede">A professional stock intelligence workspace for screening equities, simulating forecasts, reviewing risk, and turning market signals into cleaner decisions.</p>
+          <div class="hero-actions">
+            <a class="primary-button" href="#studio">Open Studio</a>
+            <a class="secondary-button" href="#insights">View Insights</a>
+          </div>
+          <div class="hero-stats" aria-label="Platform highlights">
+            <div><strong>All listed</strong><span>market symbols</span></div>
+            <div><strong>12</strong><span>AI signals</span></div>
+            <div><strong>Live-style</strong><span>news feed</span></div>
+          </div>
+        </div>
+        <div class="hero-visual" aria-hidden="true">
+          <img src="assets/trading-studio-hero.png" alt="">
+          <div class="signal-card signal-card-one">
+            <span>Model Confidence</span>
+            <strong id="heroConfidence">84%</strong>
+          </div>
+          <div class="signal-card signal-card-two">
+            <span>Market Pulse</span>
+            <strong>Risk-On</strong>
+          </div>
+        </div>
+      </section>
+
+      <section class="studio-grid" id="studio">
+        <div class="panel command-panel">
+          <div class="panel-heading">
+            <p class="eyebrow">Prediction engine</p>
+            <h2>Forecast a stock</h2>
+          </div>
+          <div class="search-row">
+            <label for="stockSearch">Ticker or company</label>
+            <div class="search-box">
+              <input id="stockSearch" type="search" placeholder="Try NVDA, AAPL, MSFT, TSLA..." autocomplete="off">
+              <button id="analyzeButton" type="button">Analyze</button>
+            </div>
+          </div>
+          <div class="popular-tickers" id="popularTickers" aria-label="Popular stock shortcuts"></div>
+        </div>
+
+        <article class="panel prediction-panel" aria-live="polite">
+          <div class="prediction-topline">
+            <div>
+              <p class="eyebrow">Selected equity</p>
+              <h2 id="stockName">NVIDIA Corp.</h2>
+              <span id="stockMeta">NVDA • Semiconductors • Mega Cap</span>
+            </div>
+            <div class="rating-badge" id="ratingBadge">Strong Buy</div>
+          </div>
+          <div class="price-strip">
+            <div><span>Price</span><strong id="priceValue">$126.40</strong></div>
+            <div><span>Forecast</span><strong id="forecastValue">$138.72</strong></div>
+            <div><span>Upside</span><strong class="positive" id="upsideValue">+9.7%</strong></div>
+            <div><span>Confidence</span><strong id="confidenceValue">84%</strong></div>
+          </div>
+          <div class="chart-card">
+            <canvas id="forecastChart" width="900" height="320" aria-label="Stock forecast chart"></canvas>
+          </div>
+          <div class="signal-grid" id="signalGrid"></div>
+        </article>
+      </section>
+
+      <section class="market-section" id="markets">
+        <div class="section-heading">
+          <p class="eyebrow">Market universe</p>
+          <h2>Screen more of the market</h2>
+          <p>Browse Nasdaq-listed and other U.S. exchange-listed securities with market filters, quality signals, and watchlist actions.</p>
+          <p class="universe-status" id="universeStatus">Loading the full listed-market symbol directory...</p>
+        </div>
+        <div class="market-controls">
+          <input id="marketFilter" type="search" placeholder="Search hundreds of tickers...">
+          <select id="sectorFilter" aria-label="Filter by sector">
+            <option value="All">All sectors</option>
+          </select>
+        </div>
+        <div class="market-table-wrap">
+          <table class="market-table">
+            <thead>
+              <tr>
+                <th>Ticker</th>
+                <th>Company</th>
+                <th>Sector</th>
+                <th>Signal</th>
+                <th>Score</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody id="marketRows"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="insights-grid" id="insights">
+        <article class="panel">
+          <div class="panel-heading">
+            <p class="eyebrow">AI insights</p>
+            <h2>Decision brief</h2>
+          </div>
+          <div id="decisionBrief" class="brief-list"></div>
+        </article>
+        <article class="panel">
+          <div class="panel-heading">
+            <p class="eyebrow">Stock news</p>
+            <h2>Market headlines</h2>
+          </div>
+          <div id="newsFeed" class="news-feed"></div>
+        </article>
+        <article class="panel watchlist-panel">
+          <div class="panel-heading">
+            <p class="eyebrow">Portfolio workflow</p>
+            <h2>Watchlist</h2>
+          </div>
+          <div id="watchlist" class="watchlist"></div>
+        </article>
+      </section>
+
+      <section class="risk-section" id="risk">
+        <div class="panel risk-card">
+          <div class="panel-heading">
+            <p class="eyebrow">Risk planner</p>
+            <h2>Position sizing</h2>
+          </div>
+          <div class="risk-form">
+            <label>Portfolio value <input id="portfolioValue" type="number" value="10000" min="100"></label>
+            <label>Risk per trade <input id="riskPercent" type="number" value="2" min="0.1" max="10" step="0.1"></label>
+            <label>Stop loss <input id="stopLoss" type="number" value="6" min="1" max="30" step="0.5"></label>
+          </div>
+          <div class="risk-output" id="riskOutput"></div>
+        </div>
+        <div class="panel methodology-card">
+          <p class="eyebrow">Methodology</p>
+          <h2>Built like a product demo</h2>
+          <p>This prototype combines momentum, trend, relative strength, volatility, sentiment, valuation, and liquidity-style signals into an explainable score. Data is simulated for project presentation and should not be treated as financial advice.</p>
+        </div>
+      </section>
+    </main>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
